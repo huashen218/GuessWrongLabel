@@ -1,0 +1,632 @@
+<!-- html begin -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+		<head>
+		<title>HIT for Complext Sentence EDUs Detection - Test </title>
+
+
+		
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js"></script>
+			<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<style>
+  .to-rel { position:relative; }
+  .to-abs { position:absolute; }
+  .to-hdi { display:inline-block; font-size:12px; cursor:default; line-height:14px; }
+  .to-hdi:hover > svg { float:left; z-index:3; position:relative; }
+  .to-hdi:hover > .to-lockup { display:block; z-index:2; }
+  .to-hdi .hidden, .to-nhdi .hidden { display:none }
+  .to-nhdi { font-size:12px; }
+  .to-lockup { display:none; width:300px; top:-1px; left:-5px; background:#fff; padding:5px; box-shadow:0px 2px 10px 1px rgba(0,0,0,0.7); }
+  .to-lockup a { display:inline-block; width:50%; text-align:center; margin-top:10px; color:crimson; }
+  .to-rn { margin:0 0 3px 25px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .to-fc { display:flex; }
+  .to-fc > div { flex:1; }
+  .to-fc .to-th { font-weight:700; width:100%; background:#6a8ca3; color:#fff }
+  .to-fc span { display:block; padding:3px 0; margin:0; }
+</style>
+		</head>
+		
+		<body>
+		
+		
+			<form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit">
+		
+		
+		
+				<input type="hidden" value="" name="assignmentId" id="assignmentId">
+
+<input type="hidden" name="img-id" id="img-id" value="2513"><input type="hidden" name="has-interpretation" id="has-interpretation" value="no"><input type="hidden" name="correct-label" id="correct-label" value="grey fox"><input type="hidden" name="label-1" id="label-1" value="kit fox"><input type="hidden" name="label-2" id="label-2" value="mousetrap"><input type="hidden" name="label-3" id="label-3" value="dock"><input type="hidden" name="label-4" id="label-4" value="menu"><input type="hidden" name="label-5" id="label-5" value="gyromitra">		<!-- tweet text end -->
+
+		<section class="container" id="Sentiment"><!-- Instructions (collapsible) -->
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+			<div class="card">
+
+				<div class="card-header">
+					Instructions
+				  </div>
+
+				<div class="card-body">
+
+					<p>An automated computer algorithm learns from millions of images to recognize common patterns of different objects, animals, or items.</p>
+
+					<p>This algorithm can correctly identify everyday objects and animals in many photos.</p>
+						
+					<p><strong>However, it also makes mistakes quite often.</strong></p>
+					
+					<p>An algorithm <strong>mis</strong>identifies an image due to several possible reasons:</p>
+
+					<ul>
+						<li>
+							<strong>It (incorrectly) learns from <span style="color: blue;">background correlations</span>.</strong>
+							For example, given an image of "a horse in the desert," it might be easily misclassified it as "camel" because the algorithm learns from millions of images that "desert" is often correlated with "camel" but not other animals.
+						</li>
+						<li>
+							<strong>It (incorrectly) learns a similar <span style="color: blue;">color or appearance</span>.</strong>
+							For example, an image of "mushroom" can be misidentified as a "crab" because these two items share a similar color or appearance.		</li>
+						
+						<li>
+							<strong>It (incorrectly) learns <span style="color: blue;">local characteristics</span>.</strong> 
+							For example, when the algorithm only sees the body part of a "dog" but ignores its head, the image might be identified as a "cat" or a "wolf."
+						</li>
+					</ul>
+
+					<hr>
+
+					<h5>The following image shows a "<span id="correct-label-span" style="font-weight: bold; color: red;">dog</span>" in it:</h5>
+
+						<div class="text-center">
+							<img id="origin-img" src="condition1/One_Idx_2513.png" class="img-fluid" alt="Responsive image" style="width: 20%; margin-top: 20px; margin-bottom: 20px;">
+							<!--
+							<img src="condition2/Idx_454.png" class="img-fluid" alt="Responsive image">
+							-->
+						</div>
+
+					<h5>However, <strong>a computer algorithm <span style="font-weight: bold; color: red;">mis</span>identified this image as something else</strong>.</h5>
+					
+					<hr>
+					
+					<div id="interpretation-box">
+
+					<h5>The following are some visualizations that try to show <strong style="color: red;">how the algorithm "sees" this image</strong>:</h5>
+
+
+							<div class="text-center">
+								<img id="interpret-img" src="condition2/Idx_2513.png" class="img-fluid" alt="Responsive image" style="width: 100%; margin-bottom: 20px; margin-top: 20px;">
+								<!--
+								<img src="condition2/Idx_454.png" class="img-fluid" alt="Responsive image">
+								-->
+							</div>
+
+							<p>From left to right, the image  above shows:</p>
+
+							<ol style="font-size: 20px;">
+								<li style="margin-bottom: 20px;"><strong>The original image.</strong></li>
+								<li><strong>The 20% masked image:</strong> We only allow the algorithm to see 20% of the image and ask the algorithm to choose which 20% is the most important region. The black mask <span style="color: blue; font-weight: bold;">blocks</span> the regions where the algorithm pays <span style="color: blue; font-weight: bold;">less attention</span> to.</li>
+								<li><strong>The 40% masked image:</strong> Same as 2., but the algorithm can see 40% of the image.</li>
+								<li style="margin-bottom: 20px;"><strong>The 50% masked image:</strong> Same as 2., but the algorithm can see 50% of the image..</li>
+
+
+								<li><strong>The colorful heatmap 1:</strong> the heatmap <span style="color: blue; font-weight: bold;">highlights</span> the critical regions where the algorithm pays <span style="color: blue; font-weight: bold;">more attention</span> to. (Larger number = more attention.) </li>
+								<li><strong>The colorful heatmap 2:</strong> Same as 5., but the attention is measured in a slightly different way.</li>
+							</ol>
+
+							<hr>
+
+						</div>
+
+					<h5>Based on all the information above, please <strong>guess which of the following the algorithm thinks this image is</strong>:</h5>
+
+					<!-- sheep,spider,monkey,cow -->
+
+					
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="option-1" value="sheep" required>
+						<label class="form-check-label" for="option-1" id="option-1-label">sheep</label>
+					  </div>
+					  <div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="option-2" value="spider" required>
+						<label class="form-check-label" for="option-2" id="option-2-label">spider</label>
+					  </div>
+					  <div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="option-3" value="monkey" required>
+						<label class="form-check-label" for="option-3" id="option-3-label">monkey</label>
+					  </div>
+					  <div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="option-4" value="cow" required>
+						<label class="form-check-label" for="option-4" id="option-4-label">cow</label>
+					  </div>
+					  <div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="option-5" value="cow" required>
+						<label class="form-check-label" for="option-5" id="option-5-label">cow</label>
+					  </div>
+				
+
+				</div>
+
+			</div>
+
+			
+			
+			
+	
+	</div>
+	
+	
+	
+			
+			</div>
+		</div>
+		
+		
+		<p  class="text-center">
+			<input type="submit" id="submitButton" class="btn btn-primary btn-block disabled" value="Loading timer..." disabled="true">
+		</p>
+		
+		
+		</section>
+		
+		
+
+		
+		</div>
+	
+		</form>
+		
+
+
+<!--
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" />
+-->
+
+<!-- Open internal style sheet -->
+
+<style type="text/css">#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+#instructionBody table{
+  font-size: 14px;
+  margin-top: 10px;
+}
+#instructionBody table caption{
+  text-align: left;
+  padding: 0 0 5px 0;
+}
+#Inputs{
+  display: block;
+}
+.content{
+  margin-bottom: 15px;
+}
+.radio:first-of-type{
+  margin-top: -5px;
+}
+.tweet-box.error{
+  border: 1px solid red;
+}
+</style>
+
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Open internal javascript -->
+<script>
+
+var connectiveChecked = false;
+var duration = 5;
+
+  $(document).ready(function() {
+
+
+		setInterval(function(){
+		
+		//submitButton
+		if(duration>0){
+			var countdownText = "You can submit in "+duration+" seconds"
+			$("#timer-display").text(countdownText+". Clicking on any buttons will not affect your timer.");
+			$("#submitButton").val(countdownText);
+			$("#submitButton").addClass("disabled");
+			$("#submitButton").prop("disabled", true);
+			duration--;
+		}else{
+			$("#timer-display").text("You've spent 45 seconds in this HIT. Feel free to submit when you finish!");
+			$("#submitButton").val("Submit");
+			$("#submitButton").removeClass("disabled");
+			$("#submitButton").prop("disabled", false);
+		}
+		
+	}, 1000);
+
+
+	/*
+	<!-- 140,cat,dog,pig,mushroom,wolf -->
+
+		<input type="hidden" name="img-id" id="img-id" value="140">
+		<input type="hidden" name="has-interpretation" id="has-interpretation" value="yes">
+
+		<input type="hidden" name="label-1" id="label-1" value="dog">
+		<input type="hidden" name="label-2" id="label-2" value="pig">
+		<input type="hidden" name="label-3" id="label-3" value="mushroom">
+		<input type="hidden" name="label-4" id="label-4" value="wolf">
+	*/
+
+	var nowCorrectLabel = $("#correct-label").attr("value");
+	$("#correct-label-span").text(nowCorrectLabel);
+
+	if($("#has-interpretation").attr("value")=="yes"){
+		//do nothing
+	}else{
+		$("#interpretation-box").remove();
+	}
+
+	var nowImgId = $("#img-id").attr("value");
+	//src="condition1/One_Idx_335.png"
+	$("#origin-img").attr("src", "../condition1/One_Idx_"+nowImgId+".png");
+	
+	//<img id="interpret-img" src="condition2/Idx_335.png" class="img-fluid" alt="Responsive image" style="width: 100%; margin-bottom: 20px; margin-top: 20px;">
+	$("#interpret-img").attr("src", "../condition2/Idx_"+nowImgId+".png");
+	
+
+	for(var i=1;i<=5;i++){
+		var nowLabel = $("#label-"+i).attr("value");
+		$("#option-"+i).attr("value", nowLabel);
+		$("#option-"+i+"-label").text(nowLabel);
+	}
+
+	$("div.form-check").shuffle();
+
+
+  
+	$("#submitButton").on("click", function(e){
+		e.preventDefault();
+		$("#mturk_form").submit();
+	});
+	
+	
+
+	
+	function sentenceEndsWith(tokens, dict){
+		//console.log(tokens);
+		//console.log(dict);
+		var lastTok = "";
+		var hit = false;
+		for(var i=0;i<tokens.length;i++){
+			var nowToken = tokens[i].toUpperCase().trim();
+			if(matchesDictWord(nowToken, dict)){
+				hit = true;
+			}else{
+				hit = false;
+			}
+			//if(isAllLetter(nowToken)){
+				//iterate on dictionary
+				
+			//}
+			
+		}
+		
+			
+		
+		
+		return hit;
+
+	};
+
+	function matchesDictWord(nowToken, dict){
+		for(var j=0;j<dict.length;j++){
+			var nowDictWord = dict[j].toUpperCase().trim();
+			//console.log(nowDictWord, nowToken);
+			//console.log(dict);
+			if(nowToken==nowDictWord){
+				//lastTok = nowDictWord;
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	function isAllLetter(inputtxt){
+   		var letters = /^[A-Za-z]+$/;
+   		return inputtxt.match(letters);
+      	
+  	}
+  
+	
+	function updateLineCount(){
+	
+		enteredText = $("#textarea-main").val().trim();
+	
+        enteredText = enteredText.replace(/(?:(?:\r\n|\r|\n)\s*){2}/gm, "\n");
+        $("#textarea-main").val(enteredText);
+	
+		
+		numberOfLineBreaks = (enteredText.match(/\n/g)||[]).length;
+		numberOfLineBreaks++;
+		//characterCount = enteredText.length + numberOfLineBreaks;
+		$("#line-count").text(numberOfLineBreaks);
+		if(numberOfLineBreaks>=6){
+			$("#chunk-btn").attr("disabled", true);
+			$("#chunk-btn").css("text-decoration-line", "line-through");
+			
+		}else{
+			$("#chunk-btn").removeAttr("disabled");
+			$("#chunk-btn").css("text-decoration-line", "none");
+			
+		}
+		
+		
+	};
+  
+	updateLineCount();
+	
+	$("#textarea-main").keyup(function(e){
+		
+		updateLineCount();
+	});
+		
+	$("#textarea-main").change(function(e){
+	
+		updateLineCount();
+	});
+	
+	$("#textarea-main").on("change", function(e){
+		
+		updateLineCount();
+	});
+	
+	
+	
+	$("#reset-btn").on("click", function(e){
+		
+		var r = confirm("All sub-sentences will be removed. Are you sure?");
+		if (r == true) {
+			$("#chunk-box").empty();
+			$("#textarea-main").empty();
+			$("#textarea-main").val(text);
+			//$("#display-text").text(text);
+			updateLineCount();
+		}
+	});
+	
+	
+	//var sybstringId = 1;
+	$("#chunk-btn").on("click", function(e){
+	 
+		if($("#chunk-box").find("input").length>0){//already chunked before
+			var r = confirm("This will remove all existing sub-sentences. Are you sure?");
+			if (r == false) {
+				return false;
+			}
+		}
+			
+		numberOfLineBreaks = (enteredText.match(/\n/g)||[]).length;
+		numberOfLineBreaks++;
+		if(numberOfLineBreaks==1){
+			var r = confirm("You didn't chunk this sentence at all. Are you sure? This should only happen when the original sentence is simple.");
+			if (r == true) {
+				chunkSentence();
+			}
+		}else{
+			chunkSentence();
+		}
+			
+	
+		
+		
+		
+		
+	
+	
+		
+	});
+	
+	function chunkSentence(){
+		
+		$("#chunk-box").empty();
+		
+		var nowOl = $("<ol></ol>");
+		
+		var arrayOfLines = $('#textarea-main').val().split('\n');
+		$.each(arrayOfLines, function(index, item) {
+			//console.log(item);
+			//<label for="substring-1"></label>
+			
+			var nowLi = $("<li></li>");
+			$(nowLi).css("margin-top", "30px");
+			
+			var nowLabel = $("<label></label>");
+			$(nowLabel).attr("for", "substring-"+index);
+			$(nowLabel).text(item);
+			//sybstringId++;
+			
+			//<input required="" name="substring-1" type="text" class="form-control" id="substring-1">
+			//$("#chunk-box").append(nowLabel);
+			$(nowLi).append(nowLabel);
+			
+			var nowInput = $("<input></input>");
+			//$(nowInput).css("margin-top", "30px");
+			$(nowInput).attr("autocomplete", "off");
+			$(nowInput).attr("required", "");
+			$(nowInput).attr("name", "subsentence-"+index);
+			$(nowInput).attr("id", "subsentence-"+index);
+			$(nowInput).attr("type", "text");
+			$(nowInput).attr("class", "form-control");
+			$(nowInput).attr("onchange", "updateConnectiveWarning()");
+			$(nowInput).attr("placeholder", "Modify the substring above to make a readable, grammatical sentence.");
+			if(arrayOfLines.length==1){
+				$(nowInput).css("border", "solid 3px red");
+			}
+			
+			//<input required="" name="substring-1" type="text" class="form-control" id="substring-1">
+			//$("#chunk-box").append(nowInput);
+			$(nowLi).append(nowInput);
+			if(arrayOfLines.length==1){
+				$(nowLi).append("<div style=\"margin-top: 5px; color: black; font-size: 12px; background-color: rgb(255, 255, 204);\">Warning: We noticed that <strong>you didn't chunk the original sentence</strong>. Are you sure? This should only happen when the original sentence is simple.</div>")
+			}
+			
+			
+			var nowHiddenInput = $("<input></input>");
+			$(nowHiddenInput).attr("type", "hidden");
+			$(nowHiddenInput).attr("name", "substring-"+index);
+			$(nowHiddenInput).val(arrayOfLines[index]);
+			$(nowLi).append(nowHiddenInput);
+			
+			$(nowOl).append(nowLi);
+			
+		});
+	
+		$("#chunk-box").append(nowOl);
+		
+		/*
+			$("#submitButton").addClass("disabled");
+			$("#submitButton").prop("disabled", true);
+		*/
+		
+		var submitBtn = $("<p  class=\"text-center\"><input type=\"submit\" id=\"submitButton\" class=\"btn btn-primary disabled\" value=\"Loading timer...\" disabled=\"true\"></p>");
+		
+		$("#chunk-box").append(submitBtn);
+	
+	};
+	
+	
+	
+  });
+
+
+  function updateConnectiveWarning(){
+		//input validate
+		var list = $("#chunk-box").find("li");
+		for(var i=0;i<list.length;i++){
+			var substring = $(list[i]).find("input[type=hidden]").val().trim();
+			//console.log(substring);
+			var text = $(list[i]).find("input").val().trim();
+			
+			var matchedConnectives = getMatchedConnectives(text.split(/\s+/), connectives);
+			console.log(matchedConnectives);
+
+			$(list[i]).find("div").remove();
+			if(matchedConnectives.length>0){
+
+				var nowWarningDiv = $("<div></div>");
+				$(nowWarningDiv).css("margin-top", "5px");
+				$(nowWarningDiv).css("color", "black");
+				$(nowWarningDiv).css("font-size", "12px");
+				$(nowWarningDiv).css("background-color", "#ffffcc");
+				
+				//$(nowWarningDiv).css("text-align", "right");
+
+				var warningText = "Warning: We noticed that you used <strong>";
+				for(var j=0;j<matchedConnectives.length;j++){
+					warningText += "\""+matchedConnectives[j]+"\"" ;
+					if(j!=matchedConnectives.length-1){
+						warningText += ", "
+					}
+				}
+
+				warningText += "</strong> in the sentence. These words are often (not always) used as connectives. You can still submit this HIT but please try your best to eliminate connectives.";
+				$(nowWarningDiv).html(warningText);
+
+
+				$(list[i]).append(nowWarningDiv);
+			}
+
+			
+
+			
+		}
+	};
+
+
+
+
+	function getMatchedConnectives(tokens, dict){
+		console.log(tokens);
+		console.log(dict);
+		var result = [];
+		for(var i=0;i<dict.length;i++){
+			if(containsConnective(tokens, dict[i].toUpperCase().split(/\s+/))){
+				result.push(dict[i]);
+			}
+		}
+		return result;
+
+		
+	};
+
+	function containsConnective(tokens, nowConnectiveTokens){
+
+		//for(var j=0;j<nowConnectiveTokens.length;j++){
+			for(var i=0;i<tokens.length;i++){
+				if(matchesConnectives(i, tokens, nowConnectiveTokens)){
+					return true;
+				}
+			}
+		//}
+		return false;
+	}
+
+	function matchesConnectives(tokIndex, tokens, connectiveTokens){
+
+		//var connectiveTokens = word.toUpperCase().split(/\s+/);
+		for(var i=0;i<connectiveTokens.length;i++){
+			if(tokIndex<tokens.length){
+				if(connectiveTokens[i]==tokens[tokIndex].toUpperCase()){
+					tokIndex++;
+				}else{//token wrong
+					return false;
+				}
+			}else{//length wrong
+				return false;
+			}
+		}
+		return true;
+
+	}
+
+	(function($){
+ 
+ $.fn.shuffle = function() {
+
+	 var allElems = this.get(),
+		 getRandom = function(max) {
+			 return Math.floor(Math.random() * max);
+		 },
+		 shuffled = $.map(allElems, function(){
+			 var random = getRandom(allElems.length),
+				 randEl = $(allElems[random]).clone(true)[0];
+			 allElems.splice(random, 1);
+			 return randEl;
+		});
+
+	 this.each(function(i){
+		 $(this).replaceWith($(shuffled[i]));
+	 });
+
+	 return $(shuffled);
+
+ };
+
+})(jQuery);
+
+
+
+
+</script>
+		
+		
+	
+	
+		
+		
+	
+		
+		
+		</form>
+		
+		
+		<script language="Javascript">turkSetAssignmentID();</script>
+		</body>
+		</html>
