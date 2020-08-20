@@ -9,6 +9,7 @@
 
 ## Usage
 
+####  User Interface for Evaluating Interpretation by General User:
 **User Interface** of two experimental conditions, including [Interpretation] and [No-interpretation], are both provided in this repo with six examples.
 * UI for [No-Interpretation] condition is in *"/No_Interpretation_Interface/"* with original images in *"/condition1/"*;
 * UI for [Interpretation] condition is in *"/Interpretation_Interface/"* with images and saliency maps in *"/condition2/"*.
@@ -23,8 +24,7 @@
     </embed>
 </object>
 
-
-
+####  Machine-generated Interpretation:
 The machine-generated interpretation codes using *Pytorch* is in *"/machine_generated_interpretation/"*.
 
 
