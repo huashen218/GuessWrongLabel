@@ -17,7 +17,7 @@
 ####  User Interface Demo:
 
 
-<img src="UI_Interface_Long.png" alt="drawing" width="400"/>
+<img src="UI_Interface_Long.png" alt="drawing" width="500"/>
 
 <!-- ![UI](UI_Interface_Long.png) -->
 <!-- <object data="https://github.com/huashen218/GuessWrongLabel/blob/master/UI_Interface_Demo.pdf" type="application/pdf" width="700px" height="700px">
