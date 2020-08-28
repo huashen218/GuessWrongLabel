@@ -33,4 +33,4 @@ The machine-generated interpretation codes using *Pytorch* is in *"/machine_gene
 ## Full paper access
 
 The full paper can be found
-[here](https://github.com/huashen218/GuessWrongLabel/tree/master).
+[here](https://arxiv.org/abs/2008.11721).
